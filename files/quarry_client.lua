@@ -60,6 +60,7 @@ function turtle:heading()
 end
 
 function turtle:turnTo(current_heading, target_heading)
+    -- Currently only a helper function
     if current_heading > target_heading then
 	for t = 1, math.abs(target_heading - current_heading) do
 	    self.turnLeft()
@@ -110,29 +111,27 @@ function turtle:advanceColumn(layer, heading)
 end
 
 function turtle:advanceLayer(heading)
-    self.turnRight()
-    self.turnRight()
-    self.forceDown()
-    return invertHeading(heading)
+    local new_heading = invertHeading(heading)
+    self:turnTo(new_heading)
+    self:forceDown()
+    return new_heading
 end
 
 function turtle:digCube(size, heading)
     for layer = 1, size do
 	for column = 1, size do
 	    for row = 1, size do
-		if row == size then
+		if layer == clumn == row == size then
+		    -- TODO Code to execute when done
+		    print("Done!")
+		elseif column == row == size then
+		    heading = self:advanceLayer(heading)
+		elseif row == size then
 		    heading = self:advanceColumn(layer, heading)
 		else
 		    self:forceForward()
 		end
 	    end
-	    if column == size then
-		heading = self:advanceLayer(heading)
-	    end
-	end
-	if layer == size then
-	    -- TODO Code to execute when done
-	    print("Done!")
 	end
     end
 end

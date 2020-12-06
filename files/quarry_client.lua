@@ -112,7 +112,7 @@ end
 
 function turtle:advanceLayer(heading)
     local new_heading = invertHeading(heading)
-    self:turnTo(new_heading)
+    self:turnTo(heading, new_heading)
     self:forceDown()
     return new_heading
 end

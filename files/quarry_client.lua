@@ -121,10 +121,10 @@ function turtle:digCube(size, heading)
     for layer = 1, size do
 	for column = 1, size do
 	    for row = 1, size do
-		if layer == clumn == row == size then
+		if layer == size and column == size and row == size then
 		    -- TODO Code to execute when done
 		    print("Done!")
-		elseif column == row == size then
+		elseif column == size and row == size then
 		    heading = self:advanceLayer(heading)
 		elseif row == size then
 		    heading = self:advanceColumn(layer, heading)

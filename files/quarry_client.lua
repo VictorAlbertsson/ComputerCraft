@@ -51,8 +51,9 @@ function turtle:forceDown()
 end
 
 function turtle:heading()
+    -- Currently only a helper function
     v1 = vector.new(gps.locate(2, false))
-    self.forceForward()
+    self:forceForward()
     v2 = vector.new(gps.locate(2, false))
     delta = v2 - v1
     return delta.x + math.abs(delta.x) * 2 + delta.z + math.abs(delta.z) * 3
@@ -80,12 +81,12 @@ function turtle:advanceColumn(layer, heading)
 	    -- %2 means every other layer
 	    -- Do a rightward U-turn
 	    self.turnRight()
-	    self.forceForward()
+	    self:forceForward()
 	    self.turnRight()
 	else
 	    -- Do a leftward U-turn
 	    self.turnLeft()
-	    self.forceForward()
+	    self:forceForward()
 	    self.turnLeft()
 	end
     elseif heading == 1 or heading == 4 then
@@ -94,12 +95,12 @@ function turtle:advanceColumn(layer, heading)
 	    -- %2 means every other layer
 	    -- Do a leftward U-turn
 	    self.turnLeft()
-	    self.forceForward()
+	    self:forceForward()
 	    self.turnLeft()
 	else
 	    -- Do a rightward U-turn
 	    self.turnRight()
-	    self.forceForward()
+	    self:forceForward()
 	    self.turnRight()		
 	end
     else
@@ -109,8 +110,8 @@ function turtle:advanceColumn(layer, heading)
 end
 
 function turtle:advanceLayer(heading)
-    self.forceDown()
-    return self.turnTo(heading, invertHeading(heading))
+    self:forceDown()
+    return self:turnTo(heading, invertHeading(heading))
 end
 
 function turtle:digCube(size, heading)
@@ -118,13 +119,13 @@ function turtle:digCube(size, heading)
 	for column = 1, size do
 	    for row = 1, size - 1 do
 		if row == size - 1 then
-		    heading = self.advanceColumn(layer, heading)
+		    heading = self:advanceColumn(layer, heading)
 		else
-		    self.forceForward()
+		    self:forceForward()
 		end
 	    end
 	    if column == size then
-		heading = self.advanceLayer(heading)
+		heading = self:advanceLayer(heading)
 	    end
 	end
 	if layer == size then

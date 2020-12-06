@@ -110,15 +110,17 @@ function turtle:advanceColumn(layer, heading)
 end
 
 function turtle:advanceLayer(heading)
-    self:forceDown()
-    return self:turnTo(heading, invertHeading(heading))
+    self.turnRight()
+    self.turnRight()
+    self.forceDown()
+    return invertHeading(heading)
 end
 
 function turtle:digCube(size, heading)
     for layer = 1, size do
 	for column = 1, size do
-	    for row = 1, size - 1 do
-		if row == size - 1 then
+	    for row = 1, size do
+		if row == size then
 		    heading = self:advanceColumn(layer, heading)
 		else
 		    self:forceForward()

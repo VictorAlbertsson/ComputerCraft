@@ -1,3 +1,8 @@
+SOUTH = 1
+NORTH = 2
+EAST  = 3
+WEST  = 4
+
 -- function split(str, sep)
 --     if sep == nil then
 -- 	sep = "%s"
@@ -76,8 +81,7 @@ end
 
 function turtle:advanceColumn(layer, heading)
     -- TODO Move boilerplate 'turn' code into a 'uTurn' function
-    if heading == 2 or heading == 3 then
-	-- 2 = North, 3 = East
+    if heading == NORTH or heading == EAST then
 	if layer % 2 == 1 then
 	    -- %2 means every other layer
 	    -- Do a rightward U-turn
@@ -90,8 +94,7 @@ function turtle:advanceColumn(layer, heading)
 	    self:forceForward()
 	    self.turnLeft()
 	end
-    elseif heading == 1 or heading == 4 then
-	-- 1 = South, 4 = West
+    elseif heading == SOUTH or heading == WEST then
 	if layer % 2 == 1 then
 	    -- %2 means every other layer
 	    -- Do a leftward U-turn

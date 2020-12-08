@@ -2,7 +2,8 @@
 
 ** How to install
 
-   - Use the pastebin command to download the gitget command: ~> pastebin get W5ZkVYSi gitget~
+   - Use the pastebin command to download the gitget command: ~pastebin get W5ZkVYSi gitget~
      - pastebin: https://pastebin.com/W5ZkVYSi
      - forum: http://www.computercraft.info/forums2/index.php?/topic/17387-gitget-version-2-release/
-   - Use the gitget command to download the scripts: ~> gitget VictorAlbertsson computercraft master files~
+   - Use the gitget command to download the scripts: ~gitget VictorAlbertsson ComputerCraft master api~
+
